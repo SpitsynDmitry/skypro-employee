@@ -8,7 +8,6 @@ public interface EmployeeService {
 
         void addEmployee(Employee employee);
 
-
         String getEmployeeName(String name);
 
         String getEmployeeName(String name, String surname);

@@ -23,7 +23,6 @@ public class EmployeeController {
 
         return employee;
     }
-
     @GetMapping(path = "/employee/add")
     public String addEmployee(@RequestParam("name") String name,
                               @RequestParam("surname") String surname,
