@@ -12,5 +12,8 @@ public interface EmployeeService {
 
         String getEmployeeName(String name, String surname);
 
-        String findEmployeeName(String name, String surname);
+        Employee removeEmployeeName(String name, String surname);
+
+
+        String findEmployeeName(String surname);
 }

@@ -9,10 +9,10 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     List<Employee> employees = new ArrayList<>(List.of(
-               new Employee("Petr", "Ivanov", 1),
-               new Employee("Ivan", " Petrov", 2),
-               new Employee(" Sergey", " Petrov2", 3),
-               new Employee("Alexey", "Ivanjv", 4)
+               new Employee("Petr", "Ivanov"),
+               new Employee("Ivan", " Petrov"),
+               new Employee(" Sergey", " Petrov2"),
+               new Employee("Alexey", "Ivanjv")
 
     ));
 
@@ -25,10 +25,10 @@ public class EmployeeServiceImpl implements EmployeeService {
        }
         employee = employees.get(number);
 
-          }  catch (ArrayIndexOutOfBoundsException e){return "Попробуйте другой номер";}
+          }  catch (ArrayIndexOutOfBoundsException e){return "Список переполнен";}
         final String employeeDescription = ""
-               + employee.getId() + " "
-                + employee.getName();
+               + employee.getName() + " "
+                + employee.getSurname();
 
     return employeeDescription;
 
@@ -39,30 +39,28 @@ public class EmployeeServiceImpl implements EmployeeService {
    }
 
     @Override
-    public String getEmployeeName(String name) {
-        return null;
-    }
+    public String getEmployeeName(String name) {return null;}
 
 
     @Override
     public String getEmployeeName(String name, String surname) {
-        for (Employee employee : employees) {
+        Employee employee = new Employee( name,surname);
+        for (int i = 0; i < employees.size(); i++) {
             if(employee.getName().equals(name)&&employee.getSurname().equals(surname) ){
 
-                final String personDescription = ""
+                final String employeeDescription = ""
                         + employee.getName() + " "
-                        + employee.getSurname()
-                        + " " + employee.getId();
-                return personDescription;
+                        + employee.getSurname();
+                return employeeDescription;
             }
 
         }
         throw new RuntimeException("Человек с таким именем не найден");
     }
 
-
-    public Employee removeEmployeeName(String name, String surname, int id) {
-        Employee employee = new Employee( name,surname, id);
+@Override
+    public Employee removeEmployeeName(String name, String surname) {
+        Employee employee = new Employee( name,surname);
         for (int i = 0; i < employees.size(); i++) {
             if(employee.getName().equals(name)&&employee.getSurname().equals(surname) )
                 employee = null;
@@ -73,20 +71,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
     @Override
-    public String findEmployeeName(String name, String surname) {
+    public String findEmployeeName(String surname) {
         for (Employee employee : employees) {
-            if(employee.getName().equals(name)&&employee.getSurname().equals(surname) ){
-                final String personDescription = ""
+            if(employee.getSurname().equals(surname) ){
+                final String employeeDescription = ""
                         + employee.getName() + " "
-                        + employee.getSurname()
-                        + " " + employee.getId();
-                return personDescription;
+                        + employee.getSurname();
+                return employeeDescription;
             }
 
         }
         throw new RuntimeException("Человек с таким именем не найден");
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
 }
 
 

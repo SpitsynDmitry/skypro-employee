@@ -5,15 +5,16 @@ import java.util.Objects;
 
 public class Employee {
     private static int counter;
-    private final String name;
-    private final String surname;
-    private final int id;
+    private String name;
+    private String surname;
 
 
-    public Employee(String name, String surname, int id) {
+
+
+    public Employee(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.id = id;
+
     }
 
     public static int getCounter() {
@@ -28,8 +29,14 @@ public class Employee {
         return surname;
     }
 
-    public int getId() {
-        return id;
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public static void setCounter(int counter) {
@@ -40,9 +47,8 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", id=" + id +
-                '}';
+                ", surname='" + surname +
+                "}";
     }
 
     @Override
@@ -50,10 +56,10 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && name.equals(employee.name) && surname.equals(employee.surname);
+        return name.equals(employee.name) && surname.equals(employee.surname);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, id);
+        return Objects.hash(name, surname);
     }
 }
