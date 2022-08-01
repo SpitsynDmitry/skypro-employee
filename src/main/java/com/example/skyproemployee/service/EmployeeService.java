@@ -5,7 +5,6 @@ import com.example.skyproemployee.domain.Employee;
 
 public interface EmployeeService {
 
-
         void addEmployee(Employee employee);
 
         String getEmployeeName(String name);

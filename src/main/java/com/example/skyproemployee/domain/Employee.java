@@ -9,8 +9,6 @@ public class Employee {
     private String surname;
 
 
-
-
     public Employee(String name, String surname) {
         this.name = name;
         this.surname = surname;
